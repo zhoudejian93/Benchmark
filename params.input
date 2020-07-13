@@ -1,0 +1,57 @@
+[TimeLoop]
+Dt = 1000 # [s]
+MaxTimeStepSize = 2.592e6 #[s] 100days
+TEnd = 1.72e8 # [s]
+
+[Grid]
+Positions0 = 0 200 10000
+Positions1 = 0 469 501 1000
+Cells0 = 50 200
+Cells1 = 20 20 20
+Grading0 = 1.0 1.0 
+Grading1 = -1.3 1.0 1.3 #nagetive means top thin, positive means bottom thin
+
+#LowerLeft = 0 0
+#UpperRight = 60 40
+#Cells = 100 30
+#Refinement 2
+
+[Problem]
+InjectionRateGas = 0.26
+InjectionRateWater = 0.0
+EnableGravity = true
+
+[PoroElastic.Problem]
+Name = BE03_poroelastic # name passed to the output routines
+
+[TwoP.Problem]
+Name = BE03_twop # name passed to the output routines
+
+[Injection]
+xInjectionMax = 4.5
+xInjectionMin = -1.0
+yInjectionMax = 500.0
+yInjectionMin = 470.0
+extrusionFactor = 4.5
+
+[SpatialParams]
+Permeability = 1e-14 # [m^2]
+InitialPorosity = 0.2 # [-]
+
+[LinearSolver]
+ResidualReduction = 1e-20
+MaxIterations = 2000
+
+[Newton]
+MaxSteps = 100
+TargetSteps = 50
+MaxRelativeShift = 1e-10
+
+[Component]
+SolidDensity = 2700
+
+[Brine]
+Salinity = 0.048
+
+[Vtk]
+OutputName = FinemeshBEx3CCTpfaModel 
